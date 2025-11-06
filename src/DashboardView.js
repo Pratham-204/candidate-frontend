@@ -10,7 +10,7 @@ export function DashboardView({ onNavigate }) {
 
     const fetchStats = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/dashboard-stats');
+            const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/dashboard-stats`);
             setStats(res.data);
         } catch (err) {
             console.error('Failed to load stats:', err);

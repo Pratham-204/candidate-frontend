@@ -55,7 +55,7 @@ export function DataEntry({ onNavigate }) {
         for (const key in formData) {
             formDataObj.append(key, formData[key]);
         }
-        await axios.post('http://localhost:5000/candidates', formDataObj);
+    await axios.post(`${process.env.REACT_APP_API_BASE_URL}/candidates`, formDataObj);
         onNavigate('home');
     };
 

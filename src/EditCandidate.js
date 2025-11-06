@@ -67,7 +67,7 @@ export function EditCandidate({ onNavigate, candidate }) {
         }
 
         try {
-            await axios.put(`http://localhost:5000/candidates/${candidate.id}`, formData);
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/candidates/${candidate.id}`, formData);
             alert('Candidate updated successfully!');
             onNavigate('databaseView');
         } catch (error) {

@@ -17,7 +17,7 @@ export function DatabaseView({ onNavigate }) {
 
     const fetchCandidates = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/candidates');
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/candidates`);
             setCandidates(response.data);
         } catch (error) {
             console.error('Error fetching candidates:', error);
@@ -29,7 +29,7 @@ export function DatabaseView({ onNavigate }) {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`http://localhost:5000/candidates/${id}`);
+            await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/candidates/${id}`);
             setCandidates(candidates.filter(candidate => candidate.id !== id));
         } catch (error) {
             console.error('Error deleting candidate:', error);
@@ -144,7 +144,7 @@ export function DatabaseView({ onNavigate }) {
                             <td className="border px-4 py-2 text-center">
                                 {candidate.resume_url ? (
                                     <a
-                                        href={`http://localhost:5000${candidate.resume_url}`}
+                                        href={`${process.env.REACT_APP_API_BASE_URL}${candidate.resume_url}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-blue-600 underline"
